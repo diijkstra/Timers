@@ -14,9 +14,13 @@ class Timer
 private:
   uint32_t _time;
   uint32_t _lastTime;
+  bool _running;
 
 public:
+  Timer() : _time(0), _lastTime(0), _running(false) {};
   void begin(const uint32_t);
+  void pause();
+  void resume();
   void restart();
   bool available();
   uint32_t time();

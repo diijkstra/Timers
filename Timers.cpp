@@ -4,6 +4,7 @@
 void Timer::restart()
 {
   _lastTime = millis();
+  _running = true;
 }
 
 void Timer::begin(const uint32_t interval)
@@ -45,4 +46,16 @@ uint32_t Timer::time()
 void Timer::time(const uint32_t interval)
 {
   _time = interval;
+}
+
+void Timer::pause()
+{
+  _time = milis() - _lastTime;
+  _running = false;
+}
+
+void Timer::resume()
+{
+  _lastTime = millis();
+  _running = true;
 }
